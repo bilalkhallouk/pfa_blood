@@ -68,3 +68,5 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 =======
 # pfablood
 >>>>>>> dd844134d4fd97d9992e61f58cd77bd2e2b1b410
+"# Blood Donation Management System" 
+"A Laravel-based blood donation platform connecting donors with patients" 
