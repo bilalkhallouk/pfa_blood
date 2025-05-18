@@ -21,9 +21,11 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
+        'blood_type',
         'phone',
-        'cin',
-        'age',
+        'location',
+        'latitude',
+        'longitude',
         'last_donation_at'
     ];
 
@@ -47,8 +49,7 @@ class User extends Authenticatable
         'password' => 'hashed',
         'last_donation_at' => 'datetime',
         'latitude' => 'float',
-        'longitude' => 'float',
-        'age' => 'integer',
+        'longitude' => 'float'
     ];
 
     /**
@@ -73,5 +74,27 @@ class User extends Authenticatable
     public function isPatient(): bool
     {
         return $this->role === 'patient';
+    }
+
+    public function bloodRequests()
+    {
+        return $this->hasMany(BloodRequest::class);
+    }
+
+    public function isEligibleToDonate()
+    {
+        if (!$this->last_donation_at) {
+            return true;
+        }
+
+        return $this->last_donation_at->addMonths(3)->isPast();
+    }
+
+    /**
+     * Get the user's settings
+     */
+    public function settings()
+    {
+        return $this->hasOne(UserSettings::class);
     }
 }

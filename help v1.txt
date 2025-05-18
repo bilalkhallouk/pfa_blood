@@ -1,0 +1,13 @@
+landing page
+
+login signup
+
+patient dashboard
+
+donor finder
+
+blood centers
+
+profile
+
+settings
